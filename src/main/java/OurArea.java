@@ -44,6 +44,7 @@ public class OurArea extends Area {
                     "images/tree_1.png");
         }
         //*/
+        
 
         //* Exercise #3. Initialize the tiles.
         tiles = new int[NUM_TILES_X][NUM_TILES_Y];
@@ -56,10 +57,17 @@ public class OurArea extends Area {
         }
 
         // Example: Draw two stones at specific locations.
-        tiles[0][0] = STONE;
-        tiles[2][3] = STONE;
+        tiles[6][2] = STONE;
+        tiles[5][7] = STONE;
         //*/
         
+        //draws a pond
+        for(int i = 4; i > 0; i--) { 
+        		for(int k = 0; k <= i; k++) {
+        			
+        			tiles[i][k] = WATER;
+        		}
+        }
     }
 
     @Override
@@ -81,11 +89,14 @@ public class OurArea extends Area {
                 // otherwise draw a stone
                 if (tiles[i][j] == GRASS) {
                     drawGrass(i, j);
-                } else {
+                } else if (tiles[i][j] == STONE) {
                     drawStone(i, j);
+                } else {
+                		drawWater(i, j);
                 }
             }
         }
-        drawWater(); 
+        
+        //drawPond();
     }
 }

@@ -19,7 +19,7 @@ public class Area extends JPanel {
     /**
      * Constants for the grass and stone tiles.
      */
-    protected static final int GRASS = 0, STONE = 1;
+    protected static final int GRASS = 0, STONE = 1, WATER = 2;
     /**
      * Calculates the number of tiles based on the Window's width.
      */
@@ -82,7 +82,7 @@ public class Area extends JPanel {
         }
         
         //initaizalize water
-        water = new Tile(2, 2, "file:images/water.png"); 
+        water = new Tile(0, 0, "file:images/water.png"); 
 
         g2 = null;
 
@@ -118,10 +118,11 @@ public class Area extends JPanel {
         }
     }
     
-    protected void drawWater() {
+    protected void drawWater(int i, int j) {
     	
-    		water.draw(g2);
+    		g2.drawImage(water.image, null, i * 64, j * 64);
     }
+    
 
     // Overridden function from JPanel, which allows us to
     // write our own paint method which draws our area.
@@ -153,5 +154,6 @@ public class Area extends JPanel {
     protected void drawTrees() {
         // Implement in a child class.
     }
+    
 
 }

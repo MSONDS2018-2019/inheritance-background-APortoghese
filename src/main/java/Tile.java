@@ -16,7 +16,7 @@ public class Tile {
 	public Tile(int x, int y, String filename) {
 		
 		try {
-            image = ImageIO.read(new URL(filename));
+            this.image = ImageIO.read(new URL(filename));
         } catch (IOException e) {
             System.out.println("Failed to load " + filename + " image.");
         }
