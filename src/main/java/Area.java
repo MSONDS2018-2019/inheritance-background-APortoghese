@@ -37,12 +37,14 @@ public class Area extends JPanel {
      * The maximum y position to place a tree on the screen.
      */
     protected static final double MAX_TREE_Y = Window.HEIGHT - Tree.HEIGHT;
+    
+    
 
     /**
      * The trees that are scattered around the area.
      */
     protected Tree[] trees;
-
+    
     /**
      * The area tile map.
      */
@@ -57,6 +59,9 @@ public class Area extends JPanel {
      * To hide this parameter from being passed around.
      */
     private Graphics2D g2;
+    
+    // tile test
+    protected Tile water;
 
     /**
      * The constructor for the Area class.
@@ -75,6 +80,9 @@ public class Area extends JPanel {
         } catch (IOException e) {
             System.out.println("Failed to load 'stone.png' image.");
         }
+        
+        //initaizalize water
+        water = new Tile(2, 2, "file:images/water.png"); 
 
         g2 = null;
 
@@ -109,6 +117,11 @@ public class Area extends JPanel {
             trees[i].draw(g2);
         }
     }
+    
+    protected void drawWater() {
+    	
+    		water.draw(g2);
+    }
 
     // Overridden function from JPanel, which allows us to
     // write our own paint method which draws our area.
@@ -131,7 +144,7 @@ public class Area extends JPanel {
      * Draws the tiles to the screen.
      */
     protected void drawTiles() {
-        // Implement in a child class.
+        
     }
 
     /**

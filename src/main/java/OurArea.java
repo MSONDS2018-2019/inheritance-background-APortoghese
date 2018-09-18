@@ -59,6 +59,7 @@ public class OurArea extends Area {
         tiles[0][0] = STONE;
         tiles[2][3] = STONE;
         //*/
+        
     }
 
     @Override
@@ -69,6 +70,7 @@ public class OurArea extends Area {
         }
         //*/
     }
+    
 
     @Override
     protected void drawTiles() {
@@ -84,5 +86,6 @@ public class OurArea extends Area {
                 }
             }
         }
+        drawWater(); 
     }
 }
