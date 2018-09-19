@@ -12,14 +12,16 @@ import javax.imageio.ImageIO;
  * Area class.
  * @author jddevaughnbrown
  *
+ *
+ *to add new tiles create and int constant, a tile object for it (in Area) and in OurArea specify where you want the tile
  */
 @SuppressWarnings("serial")
 public class Area extends JPanel {
 
     /**
-     * Constants for the grass and stone tiles.
+     * Constants for the grass and stone tiles. added water, sand, and chest tiles
      */
-    protected static final int GRASS = 0, STONE = 1, WATER = 2;
+    protected static final int GRASS = 0, STONE = 1, WATER = 2, SAND = 3, CCHEST = 4;
     /**
      * Calculates the number of tiles based on the Window's width.
      */
@@ -62,6 +64,8 @@ public class Area extends JPanel {
     
     // tile test
     protected Tile water;
+    protected Tile sand;
+    protected Tile closedChest;
 
     /**
      * The constructor for the Area class.
@@ -83,6 +87,10 @@ public class Area extends JPanel {
         
         //initaizalize water
         water = new Tile(0, 0, "file:images/water.png"); 
+        //initialize sand
+        sand = new Tile(0, 0, "file:images/sand.png");
+        //initailize closed chest
+        closedChest = new Tile(0, 0, "file:images/chest_1.png");
 
         g2 = null;
 

@@ -62,13 +62,22 @@ public class OurArea extends Area {
         //*/
         
         //draws a pond
-        for(int i = 4; i > 0; i--) { 
+        for(int i = 4; i >= 0; i--) { 
         		for(int k = 0; k <= i; k++) {
         			
         			tiles[i][k] = WATER;
         		}
         }
+        //draws sand
+        for(int i = 4; i > 0; i--) { 
+    			for(int k = 0; k <= i; k++) {
+    			
+    			tiles[k][i] = SAND;
+    		}
+    		
     }
+        tiles[(int) (Math.random() * NUM_TILES_X)][(int) (Math.random() * NUM_TILES_Y)] = CCHEST; 
+   }
 
     @Override
     protected void drawTrees() {
@@ -91,9 +100,13 @@ public class OurArea extends Area {
                     drawGrass(i, j);
                 } else if (tiles[i][j] == STONE) {
                     drawStone(i, j);
-                } else {
+                } else if (tiles[i][j] == WATER) {
                 		//drawWater(i, j);
                 		drawTile(i, j, water);
+                } else if (tiles[i][j] == SAND) {
+                		drawTile(i, j, sand);
+                } else if (tiles[i][j] == CCHEST) {
+                		drawTile(i, j, closedChest);
                 }
             }
         }

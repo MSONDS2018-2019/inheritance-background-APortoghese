@@ -6,7 +6,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 public class Tile {
-	//size of tile
+	//size of tile *tresure chests are 38x30 on a 64x64 background
 	public static final int WIDTH = 64, HEIGHT = 64;
 	//location in pixles
 	private int x, y;
