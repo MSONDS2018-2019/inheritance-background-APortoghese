@@ -10,13 +10,13 @@ public class Tile {
 	public static final int WIDTH = 64, HEIGHT = 64;
 	//location in pixles
 	private int x, y;
-	//image
-	BufferedImage image;
+	private BufferedImage image;
 
 	public Tile(int x, int y, String filename) {
 		
+		
 		try {
-            this.image = ImageIO.read(new URL(filename));
+            image = ImageIO.read(new URL(filename));
         } catch (IOException e) {
             System.out.println("Failed to load " + filename + " image.");
         }
@@ -46,8 +46,14 @@ public class Tile {
 	        return this.y;
 	    }
 	    
+	    public BufferedImage getImage() {
+	    		return this.image; 
+	    }
+	
+	    
 	//draws the image
-	public void draw(Graphics2D g2) {
+	/*public void draw(Graphics2D g2) {
         g2.drawImage(this.image, null, this.x, this.y);
-    }
+    }*/
+	    
 }

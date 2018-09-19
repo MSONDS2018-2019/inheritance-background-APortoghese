@@ -120,11 +120,16 @@ public class Area extends JPanel {
     
     protected void drawWater(int i, int j) {
     	
-    		g2.drawImage(water.image, null, i * 64, j * 64);
+    		g2.drawImage(water.getImage(), null, i * 64, j * 64);
     }
     
+    protected void drawTile(int i, int j, Object obj) { 
+    	
+		g2.drawImage(((Tile) obj).getImage(), null, i * 64, j * 64);
+    }
+  
 
-    // Overridden function from JPanel, which allows us to
+	// Overridden function from JPanel, which allows us to
     // write our own paint method which draws our area.
     @Override
     public void paint(Graphics g) {

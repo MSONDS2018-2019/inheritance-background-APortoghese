@@ -92,11 +92,11 @@ public class OurArea extends Area {
                 } else if (tiles[i][j] == STONE) {
                     drawStone(i, j);
                 } else {
-                		drawWater(i, j);
+                		//drawWater(i, j);
+                		drawTile(i, j, water);
                 }
             }
         }
-        
-        //drawPond();
+       
     }
 }
