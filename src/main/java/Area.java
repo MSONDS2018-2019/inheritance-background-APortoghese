@@ -8,12 +8,16 @@ import java.net.URL;
 import java.io.IOException;
 import javax.swing.JPanel;
 import javax.imageio.ImageIO;
+
 /**
  * Area class.
+ * 
  * @author jddevaughnbrown
  *
  *
- *to add new tiles create and int constant, a tile object for it (in Area) and in OurArea specify where you want the tile
+ *         to add new tiles create and int constant, a tile object for it (in Area) and in OurArea specify where you want the
+ *         tile
+ *
  */
 @SuppressWarnings("serial")
 public class Area extends JPanel {
@@ -39,14 +43,12 @@ public class Area extends JPanel {
      * The maximum y position to place a tree on the screen.
      */
     protected static final double MAX_TREE_Y = Window.HEIGHT - Tree.HEIGHT;
-    
-    
 
     /**
      * The trees that are scattered around the area.
      */
     protected Tree[] trees;
-    
+
     /**
      * The area tile map.
      */
@@ -61,11 +63,15 @@ public class Area extends JPanel {
      * To hide this parameter from being passed around.
      */
     private Graphics2D g2;
-    
-    // tile test
+
+    /**
+     * added tiles.
+     */
     protected Tile water;
     protected Tile sand;
     protected Tile closedChest;
+
+    // protected Sprite charater;
 
     /**
      * The constructor for the Area class.
@@ -84,13 +90,15 @@ public class Area extends JPanel {
         } catch (IOException e) {
             System.out.println("Failed to load 'stone.png' image.");
         }
-        
-        //initaizalize water
-        water = new Tile(0, 0, "file:images/water.png"); 
-        //initialize sand
+        // custom tiles
+        // initaizalize water
+        water = new Tile(0, 0, "file:images/water.png");
+        // initialize sand
         sand = new Tile(0, 0, "file:images/sand.png");
-        //initailize closed chest
+        // initailize closed chest
         closedChest = new Tile(0, 0, "file:images/chest_1.png");
+
+        // charater = new Sprite(Window.WIDTH / 2, Window.HEIGHT / 2, "file:images/MainSprite/standing_sprite.png");
 
         g2 = null;
 
@@ -100,8 +108,11 @@ public class Area extends JPanel {
 
     /**
      * Draws the grass at the specified tile.
-     * @param i - the row number of the tile
-     * @param j - the column number of the tile
+     * 
+     * @param i
+     *            - the row number of the tile
+     * @param j
+     *            - the column number of the tile
      */
     protected void drawGrass(int i, int j) {
         g2.drawImage(grassImage, null, i * 64, j * 64);
@@ -109,8 +120,11 @@ public class Area extends JPanel {
 
     /**
      * Draws the stone at the specified tile.
-     * @param i - the row number of the tile
-     * @param j - the column number of the tile position
+     * 
+     * @param i
+     *            - the row number of the tile
+     * @param j
+     *            - the column number of the tile position
      */
     protected void drawStone(int i, int j) {
         g2.drawImage(stoneImage, null, i * 64, j * 64);
@@ -118,26 +132,40 @@ public class Area extends JPanel {
 
     /**
      * Draws the specified tree.
-     * @param i - the array position of the tree to be drawn
+     * 
+     * @param i
+     *            - the array position of the tree to be drawn
      */
     protected void drawTree(int i) {
         if (trees != null) {
             trees[i].draw(g2);
         }
     }
-    
-    protected void drawWater(int i, int j) {
-    	
-    		g2.drawImage(water.getImage(), null, i * 64, j * 64);
-    }
-    
-    protected void drawTile(int i, int j, Object obj) { 
-    	
-		g2.drawImage(((Tile) obj).getImage(), null, i * 64, j * 64);
-    }
-  
 
-	// Overridden function from JPanel, which allows us to
+    /**
+     * draws water tile.
+     * 
+     * @param i
+     *            x coordinate input
+     * @param j
+     *            y coordinate input
+     * @param obj
+     *            tile object that is being drawn
+     */
+    public void drawTile(int i, int j, Object obj) {
+
+        g2.drawImage(((Tile) obj).getImage(), null, i * 64, j * 64);
+    }
+
+    /*
+     * public void drawSprite(int i, int j, Object obj) { g2.drawImage(((Sprite) obj).getImage(), null, i * 64, j * 64); }
+     */
+
+    /*
+     * protected void drawCharater() { if (charater != null) { charater.drawSprite(g2); } }
+     */
+
+    // Overridden function from JPanel, which allows us to
     // write our own paint method which draws our area.
     @Override
     public void paint(Graphics g) {
@@ -158,7 +186,7 @@ public class Area extends JPanel {
      * Draws the tiles to the screen.
      */
     protected void drawTiles() {
-        
+
     }
 
     /**
@@ -167,6 +195,5 @@ public class Area extends JPanel {
     protected void drawTrees() {
         // Implement in a child class.
     }
-    
 
 }
