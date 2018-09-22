@@ -55,6 +55,11 @@ public class Area extends JPanel {
     protected int[][] tiles;
 
     /**
+     * array of added tiles.
+     */
+    protected Tile[][] newTiles;
+
+    /**
      * The grass and stone images used as the floor texture.
      */
     private BufferedImage grassImage, stoneImage;
@@ -69,7 +74,7 @@ public class Area extends JPanel {
      */
     protected Tile water;
     protected Tile sand;
-    protected Tile closedChest;
+    //protected Tile closedChest;
 
     // protected Sprite charater;
 
@@ -96,7 +101,7 @@ public class Area extends JPanel {
         // initialize sand
         sand = new Tile(0, 0, "file:images/sand.png");
         // initailize closed chest
-        closedChest = new Tile(0, 0, "file:images/chest_1.png");
+        //closedChest = new Tile(0, 0, "file:images/chest_1.png");
 
         // charater = new Sprite(Window.WIDTH / 2, Window.HEIGHT / 2, "file:images/MainSprite/standing_sprite.png");
 
@@ -143,18 +148,17 @@ public class Area extends JPanel {
     }
 
     /**
-     * draws water tile.
-     * 
+     * draws added tiles.
      * @param i
      *            x coordinate input
      * @param j
      *            y coordinate input
-     * @param obj
-     *            tile object that is being drawn
      */
-    public void drawTile(int i, int j, Object obj) {
+    public void drawTile(int i, int j) {
 
-        g2.drawImage(((Tile) obj).getImage(), null, i * 64, j * 64);
+        if (newTiles[i][j] != null) {
+            newTiles[i][j].draw(g2);
+        }
     }
 
     /*

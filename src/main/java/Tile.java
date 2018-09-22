@@ -49,8 +49,8 @@ public class Tile {
     }
 
     // draws the image
-    /*
-     * public void draw(Graphics2D g2) { g2.drawImage(this.image, null, this.x, this.y); }
-     */
+    public void draw(Graphics2D g2) {
+        g2.drawImage(this.image, null, this.x, this.y);
+    }
 
 }

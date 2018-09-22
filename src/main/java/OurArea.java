@@ -24,8 +24,10 @@ public class OurArea extends Area {
         // * Exercise #1. Setup the tree objects at random locations.
         trees = new Tree[numberOfTrees];
         for (int i = 0; i < numberOfTrees; i++) {
-            trees[i] = new Tree((int) (Math.random() * MAX_TREE_X), (int) (Math.random() * MAX_TREE_Y), "images/tree_1.png");
+            trees[i] = new Tree((int) (Math.random() * MAX_TREE_X), (int) (Math.random() * MAX_TREE_Y), "images/tree_1.png"); 
         }
+        newTiles = new Tile[NUM_TILES_X][NUM_TILES_Y];
+        
         // */
 
         // * Exercise #3. Initialize the tiles.
@@ -58,7 +60,8 @@ public class OurArea extends Area {
             }
 
         }
-        tiles[(int) (Math.random() * NUM_TILES_X)][(int) (Math.random() * NUM_TILES_Y)] = CCHEST;
+        // tiles[(int) (Math.random() * NUM_TILES_X)][(int) (Math.random() * NUM_TILES_Y)] = CCHEST;
+        newTiles[(int) (Math.random() * NUM_TILES_X)][(int) (Math.random() * NUM_TILES_Y)] = new Chest();
 
     }
 
@@ -82,15 +85,8 @@ public class OurArea extends Area {
                     drawGrass(i, j);
                 } else if (tiles[i][j] == STONE) {
                     drawStone(i, j);
-                } else if (tiles[i][j] == WATER) {
-                    // drawWater(i, j);
-                    drawTile(i, j, water);
-                } else if (tiles[i][j] == SAND) {
-                    drawTile(i, j, sand);
-                } else if (tiles[i][j] == CCHEST) {
-                    drawTile(i, j, closedChest);
                 }
-
+                drawTile(i, j);
             }
         }
 
