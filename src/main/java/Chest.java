@@ -7,9 +7,10 @@ import javax.imageio.ImageIO;
 public class Chest extends Tile {
 
     BufferedImage image;
-    static int x, y;
+    private int x;
+    private int y;
 
-    public Chest() {
+    public Chest(int x, int y) {
         super(x, y, "file:images/chest_1.png");
 
         try {
@@ -17,7 +18,9 @@ public class Chest extends Tile {
         } catch (IOException e) {
             System.out.println("Failed to load file:images/chest_1.png");
         }
-
+        x = getX();
+        y = getY();
+        
         setLocation(x, y);
     }
 

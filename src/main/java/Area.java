@@ -25,7 +25,7 @@ public class Area extends JPanel {
     /**
      * Constants for the grass and stone tiles. added water, sand, and chest tiles
      */
-    protected static final int GRASS = 0, STONE = 1, WATER = 2, SAND = 3, CCHEST = 4;
+    protected static final int GRASS = 0, STONE = 1, SAND = 3;
     /**
      * Calculates the number of tiles based on the Window's width.
      */
@@ -72,9 +72,7 @@ public class Area extends JPanel {
     /**
      * added tiles.
      */
-    protected Tile water;
     protected Tile sand;
-    //protected Tile closedChest;
 
     // protected Sprite charater;
 
@@ -97,11 +95,8 @@ public class Area extends JPanel {
         }
         // custom tiles
         // initaizalize water
-        water = new Tile(0, 0, "file:images/water.png");
         // initialize sand
         sand = new Tile(0, 0, "file:images/sand.png");
-        // initailize closed chest
-        //closedChest = new Tile(0, 0, "file:images/chest_1.png");
 
         // charater = new Sprite(Window.WIDTH / 2, Window.HEIGHT / 2, "file:images/MainSprite/standing_sprite.png");
 

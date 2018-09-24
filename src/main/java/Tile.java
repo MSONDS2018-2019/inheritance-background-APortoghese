@@ -6,10 +6,12 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 public class Tile {
+
     // size of tile *tresure chests are 38x30 on a 64x64 background
     public static final int WIDTH = 64, HEIGHT = 64;
     // location in pixles
-    private int x, y;
+    int x;
+    int y;
     private BufferedImage image;
 
     public Tile(int x, int y, String filename) {
@@ -50,7 +52,8 @@ public class Tile {
 
     // draws the image
     public void draw(Graphics2D g2) {
-        g2.drawImage(this.image, null, this.x, this.y);
+        g2.drawImage(image, null, x * 64, y * 64);
+        System.out.println("drawing at:" + x+","+ y);
     }
 
 }

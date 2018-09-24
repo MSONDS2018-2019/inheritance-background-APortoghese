@@ -24,10 +24,10 @@ public class OurArea extends Area {
         // * Exercise #1. Setup the tree objects at random locations.
         trees = new Tree[numberOfTrees];
         for (int i = 0; i < numberOfTrees; i++) {
-            trees[i] = new Tree((int) (Math.random() * MAX_TREE_X), (int) (Math.random() * MAX_TREE_Y), "images/tree_1.png"); 
+            trees[i] = new Tree((int) (Math.random() * MAX_TREE_X), (int) (Math.random() * MAX_TREE_Y), "images/tree_1.png");
         }
         newTiles = new Tile[NUM_TILES_X][NUM_TILES_Y];
-        
+
         // */
 
         // * Exercise #3. Initialize the tiles.
@@ -43,25 +43,29 @@ public class OurArea extends Area {
         // Example: Draw two stones at specific locations.
         tiles[6][2] = STONE;
         tiles[5][7] = STONE;
+
         // */
 
         // draws a pond
-        for (int i = 4; i >= 0; i--) {
-            for (int k = 0; k <= i; k++) {
+        for (int i = 0; i <= 4; i++) {
+            for (int k = 0; k <= 4; k++) {
 
-                tiles[i][k] = WATER;
+                newTiles[i][k] = new Water(i, k);
+                System.out.println("i: "+ i + " k: " + k);
             }
         }
         // draws sand
         for (int i = 4; i > 0; i--) {
             for (int k = 0; k <= i; k++) {
 
-                tiles[k][i] = SAND;
+                //tiles[k][i] = SAND;
             }
 
         }
-        // tiles[(int) (Math.random() * NUM_TILES_X)][(int) (Math.random() * NUM_TILES_Y)] = CCHEST;
-        newTiles[(int) (Math.random() * NUM_TILES_X)][(int) (Math.random() * NUM_TILES_Y)] = new Chest();
+        int xRan = (int) (Math.random() * NUM_TILES_X);
+        int yRan = (int) (Math.random() * NUM_TILES_Y);
+
+        newTiles[xRan][yRan] = new Chest(xRan, yRan);
 
     }
 
