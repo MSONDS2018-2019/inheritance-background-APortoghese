@@ -25,7 +25,7 @@ public class Area extends JPanel {
     /**
      * Constants for the grass and stone tiles. added water, sand, and chest tiles
      */
-    protected static final int GRASS = 0, STONE = 1, SAND = 3;
+    protected static final int GRASS = 0, STONE = 1;
     /**
      * Calculates the number of tiles based on the Window's width.
      */
@@ -72,7 +72,6 @@ public class Area extends JPanel {
     /**
      * added tiles.
      */
-    protected Tile sand;
 
     // protected Sprite charater;
 
@@ -93,10 +92,6 @@ public class Area extends JPanel {
         } catch (IOException e) {
             System.out.println("Failed to load 'stone.png' image.");
         }
-        // custom tiles
-        // initaizalize water
-        // initialize sand
-        sand = new Tile(0, 0, "file:images/sand.png");
 
         // charater = new Sprite(Window.WIDTH / 2, Window.HEIGHT / 2, "file:images/MainSprite/standing_sprite.png");
 
@@ -108,7 +103,6 @@ public class Area extends JPanel {
 
     /**
      * Draws the grass at the specified tile.
-     * 
      * @param i
      *            - the row number of the tile
      * @param j

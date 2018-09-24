@@ -51,14 +51,13 @@ public class OurArea extends Area {
             for (int k = 0; k <= 4; k++) {
 
                 newTiles[i][k] = new Water(i, k);
-                System.out.println("i: "+ i + " k: " + k);
             }
         }
         // draws sand
         for (int i = 4; i > 0; i--) {
             for (int k = 0; k <= i; k++) {
 
-                //tiles[k][i] = SAND;
+                newTiles[k][i] = new Sand(k,i);
             }
 
         }
