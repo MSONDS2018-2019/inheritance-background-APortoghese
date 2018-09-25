@@ -26,23 +26,22 @@ public class OurArea extends Area {
         for (int i = 0; i < numberOfTrees; i++) {
             trees[i] = new Tree((int) (Math.random() * MAX_TREE_X), (int) (Math.random() * MAX_TREE_Y), "images/tree_1.png");
         }
-        newTiles = new Tile[NUM_TILES_X][NUM_TILES_Y];
+        tiles = new Tile[NUM_TILES_X][NUM_TILES_Y];
 
         // */
 
         // * Exercise #3. Initialize the tiles.
-        tiles = new int[NUM_TILES_X][NUM_TILES_Y];
         for (int i = 0; i < NUM_TILES_X; i++) {
             for (int j = 0; j < NUM_TILES_Y; j++) {
                 // Example: Default to grass everywhere.
-                tiles[i][j] = GRASS;
+                tiles[i][j] = new Grass(i, j);
 
             }
         }
 
         // Example: Draw two stones at specific locations.
-        tiles[6][2] = STONE;
-        tiles[5][7] = STONE;
+        tiles[6][2] = new Stone(6, 2);
+        tiles[5][7] = new Stone(5, 7);
 
         // */
 
@@ -50,21 +49,21 @@ public class OurArea extends Area {
         for (int i = 0; i <= 4; i++) {
             for (int k = 0; k <= 4; k++) {
 
-                newTiles[i][k] = new Water(i, k);
+                tiles[i][k] = new Water(i, k);
             }
         }
         // draws sand
         for (int i = 4; i > 0; i--) {
             for (int k = 0; k <= i; k++) {
 
-                newTiles[k][i] = new Sand(k,i);
+                tiles[k][i] = new Sand(k, i);
             }
 
         }
         int xRan = (int) (Math.random() * NUM_TILES_X);
         int yRan = (int) (Math.random() * NUM_TILES_Y);
 
-        newTiles[xRan][yRan] = new Chest(xRan, yRan);
+        tiles[xRan][yRan] = new Chest(xRan, yRan);
 
     }
 
@@ -82,13 +81,7 @@ public class OurArea extends Area {
         // * Exercise #4. Draw the tiles.
         for (int i = 0; i < NUM_TILES_X; i++) {
             for (int j = 0; j < NUM_TILES_Y; j++) {
-                // when a tile is set to grass draw grass
-                // otherwise draw a stone
-                if (tiles[i][j] == GRASS) {
-                    drawGrass(i, j);
-                } else if (tiles[i][j] == STONE) {
-                    drawStone(i, j);
-                }
+                
                 drawTile(i, j);
             }
         }

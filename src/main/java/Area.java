@@ -23,10 +23,6 @@ import javax.imageio.ImageIO;
 public class Area extends JPanel {
 
     /**
-     * Constants for the grass and stone tiles. added water, sand, and chest tiles
-     */
-    protected static final int GRASS = 0, STONE = 1;
-    /**
      * Calculates the number of tiles based on the Window's width.
      */
     protected static final int NUM_TILES_X = Window.WIDTH / 64;
@@ -52,17 +48,11 @@ public class Area extends JPanel {
     /**
      * The area tile map.
      */
-    protected int[][] tiles;
 
     /**
      * array of added tiles.
      */
-    protected Tile[][] newTiles;
-
-    /**
-     * The grass and stone images used as the floor texture.
-     */
-    private BufferedImage grassImage, stoneImage;
+    protected Tile[][] tiles;
 
     /**
      * To hide this parameter from being passed around.
@@ -70,58 +60,13 @@ public class Area extends JPanel {
     private Graphics2D g2;
 
     /**
-     * added tiles.
-     */
-
-    // protected Sprite charater;
-
-    /**
      * The constructor for the Area class.
      */
     public Area() {
-        // Load the grass image from the file.
-        try {
-            grassImage = ImageIO.read(new URL("file:images/grass.png"));
-        } catch (IOException e) {
-            System.out.println("Failed to load 'grass.png' image.");
-        }
-
-        // Load the stone image from the file.
-        try {
-            stoneImage = ImageIO.read(new URL("file:images/stone.png"));
-        } catch (IOException e) {
-            System.out.println("Failed to load 'stone.png' image.");
-        }
-
-        // charater = new Sprite(Window.WIDTH / 2, Window.HEIGHT / 2, "file:images/MainSprite/standing_sprite.png");
-
         g2 = null;
 
         setBackground(Color.BLACK);
         setPreferredSize(new Dimension(Window.WIDTH, Window.HEIGHT));
-    }
-
-    /**
-     * Draws the grass at the specified tile.
-     * @param i
-     *            - the row number of the tile
-     * @param j
-     *            - the column number of the tile
-     */
-    protected void drawGrass(int i, int j) {
-        g2.drawImage(grassImage, null, i * 64, j * 64);
-    }
-
-    /**
-     * Draws the stone at the specified tile.
-     * 
-     * @param i
-     *            - the row number of the tile
-     * @param j
-     *            - the column number of the tile position
-     */
-    protected void drawStone(int i, int j) {
-        g2.drawImage(stoneImage, null, i * 64, j * 64);
     }
 
     /**
@@ -145,8 +90,8 @@ public class Area extends JPanel {
      */
     public void drawTile(int i, int j) {
 
-        if (newTiles[i][j] != null) {
-            newTiles[i][j].draw(g2);
+        if (tiles[i][j] != null) {
+            tiles[i][j].draw(g2);
         }
     }
 
