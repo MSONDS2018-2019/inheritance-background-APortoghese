@@ -12,17 +12,6 @@ public class Sand extends Tile {
     
     public Sand(int x, int y) {
         super(x, y, "file:images/sand.png");
-        
-        try {
-            image = ImageIO.read(new URL("file:images/sand.png"));
-        } catch (IOException e) {
-            System.out.println("Failed to load file:images/sand.png");
-        }
-        
-        x = getX();
-        y = getY();
-
-        super.setLocation(x, y);
     }
 
 }
