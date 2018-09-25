@@ -3,10 +3,11 @@ import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
-
+/**
+ * @author aportoghese20
+ * creates and stores positions of the treasure chest tile
+ */
 public class Chest extends Tile {
-
-    BufferedImage image;
 
     public Chest(int x, int y) {
         super(x, y, "file:images/chest_1.png");

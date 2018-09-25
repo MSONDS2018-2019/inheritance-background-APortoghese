@@ -7,11 +7,14 @@ import javax.imageio.ImageIO;
 
 public class Tile {
 
-    // size of tile *tresure chests are 38x30 on a 64x64 background
+    // size of treasure chest on tile is 38x30 on a 64x64 background
+    
+    //size of tiles
     public static final int WIDTH = 64, HEIGHT = 64;
     // location in pixles
     int x;
     int y;
+    //image
     private BufferedImage image;
 
     public Tile(int x, int y, String filename) {
