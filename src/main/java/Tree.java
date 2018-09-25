@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+
 /**
  * Represents a tree in the scene, providing access to the tree's x and y location
  * as well as the ability to place the tree into the scene.
@@ -10,6 +11,7 @@ import javax.imageio.ImageIO;
  *
  */
 public class Tree {
+    // TODO add second tree?
 
     /**
      * The size of the tree. For our purposes, this is known to be the size of the tree image.

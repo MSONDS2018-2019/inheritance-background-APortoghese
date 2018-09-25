@@ -7,7 +7,7 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-//curently not working
+//TODO make acctualy work
 public class Sprite extends Tile {
 
     BufferedImage standing;

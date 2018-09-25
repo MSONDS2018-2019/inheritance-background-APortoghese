@@ -17,7 +17,7 @@ public class OurArea extends Area {
     /**
      * Constructs the OurArea.
      * @param numberOfTrees
-     *            - the number of trees to place in the area
+     *      - the number of trees to place in the area
      */
     public OurArea(int numberOfTrees) {
         super(); // A magic function. I wonder what it does?
@@ -45,14 +45,18 @@ public class OurArea extends Area {
 
         // */
 
-        // draws a pond
+        /**
+         * sets up a pond (initializes)
+         */
         for (int i = 0; i <= 4; i++) {
             for (int k = 0; k <= 4; k++) {
 
                 tiles[i][k] = new Water(i, k);
             }
         }
-        // draws sand
+        /**
+         * sets up sand (initializes)
+         */
         for (int i = 4; i > 0; i--) {
             for (int k = 0; k <= i; k++) {
 
@@ -63,6 +67,9 @@ public class OurArea extends Area {
         int xRan = (int) (Math.random() * NUM_TILES_X);
         int yRan = (int) (Math.random() * NUM_TILES_Y);
 
+        /**
+        * draws treasure chest at a random location on the screen (initializes)
+        */
         tiles[xRan][yRan] = new Chest(xRan, yRan);
 
     }
@@ -81,12 +88,9 @@ public class OurArea extends Area {
         // * Exercise #4. Draw the tiles.
         for (int i = 0; i < NUM_TILES_X; i++) {
             for (int j = 0; j < NUM_TILES_Y; j++) {
-                
+
                 drawTile(i, j);
             }
         }
-
-        // drawSprite(charater.getX(), charater.getY(), charater);
-
     }
 }

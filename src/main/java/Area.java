@@ -11,12 +11,7 @@ import javax.imageio.ImageIO;
 
 /**
  * Area class.
- * 
  * @author jddevaughnbrown
- *
- *
- *         to add new tiles create and int constant, a tile object for it (in Area) and in OurArea specify where you want the
- *         tile
  *
  */
 @SuppressWarnings("serial")
@@ -30,7 +25,6 @@ public class Area extends JPanel {
      * Calculates the number of tiles based on the Window's height.
      */
     protected static final int NUM_TILES_Y = Window.HEIGHT / 64;
-
     /**
      * The maximum x position to place a tree on the screen.
      */
@@ -46,11 +40,7 @@ public class Area extends JPanel {
     protected Tree[] trees;
 
     /**
-     * The area tile map.
-     */
-
-    /**
-     * array of added tiles.
+     * array of tiles (map).
      */
     protected Tile[][] tiles;
 
@@ -71,9 +61,8 @@ public class Area extends JPanel {
 
     /**
      * Draws the specified tree.
-     * 
      * @param i
-     *            - the array position of the tree to be drawn
+     *      - the array position of the tree to be drawn
      */
     protected void drawTree(int i) {
         if (trees != null) {
@@ -84,9 +73,9 @@ public class Area extends JPanel {
     /**
      * draws added tiles.
      * @param i
-     *            x coordinate input
+     *      - x coordinate of tile on screen
      * @param j
-     *            y coordinate input
+     *      - y coordinate of tile on screen
      */
     public void drawTile(int i, int j) {
 
@@ -94,14 +83,6 @@ public class Area extends JPanel {
             tiles[i][j].draw(g2);
         }
     }
-
-    /*
-     * public void drawSprite(int i, int j, Object obj) { g2.drawImage(((Sprite) obj).getImage(), null, i * 64, j * 64); }
-     */
-
-    /*
-     * protected void drawCharater() { if (charater != null) { charater.drawSprite(g2); } }
-     */
 
     // Overridden function from JPanel, which allows us to
     // write our own paint method which draws our area.
@@ -124,7 +105,7 @@ public class Area extends JPanel {
      * Draws the tiles to the screen.
      */
     protected void drawTiles() {
-
+     // Implement in a child class.
     }
 
     /**

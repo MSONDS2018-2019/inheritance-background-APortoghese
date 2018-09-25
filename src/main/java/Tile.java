@@ -25,9 +25,9 @@ public class Tile {
         setLocation(x, y);
     }
 
-    public void setLocation(int xPos, int yPos) {
-        this.x = xPos;
-        this.y = yPos;
+    public void setLocation(int col, int row) {
+        this.x = col;
+        this.y = row;
     }
 
     /**
@@ -53,7 +53,6 @@ public class Tile {
     // draws the image
     public void draw(Graphics2D g2) {
         g2.drawImage(image, null, x * 64, y * 64);
-        System.out.println("drawing at:" + x+","+ y);
     }
 
 }
