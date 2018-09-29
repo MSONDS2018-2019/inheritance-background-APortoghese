@@ -17,8 +17,8 @@ public class Sprite extends Tile {
     private String preImg;
     private String input;
 
-    public Sprite(int x, int y) {
-        super(x, y, "file:images/MainSprite/standing_sprite.png");
+    public Sprite(int x, int y, String filename) {
+        super(x, y, filename);
         xPos = x;
         yPos = y;
     }
@@ -49,10 +49,4 @@ public class Sprite extends Tile {
         System.out.println(yPos);
     }
 
-    public int getPreviousX() {
-        return preX;
-    }
-    public int getPreviousY() {
-        return preY;
-    }
 }

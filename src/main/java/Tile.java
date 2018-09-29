@@ -6,15 +6,15 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 public class Tile {
-    
-    //size of tiles
+
+    // size of tiles
     public static final int WIDTH = 64, HEIGHT = 64;
     // location in pixles
     int x;
     int y;
-    //image
+    // image
     private BufferedImage image;
-    //filename
+    // filename
     String filename;
 
     public Tile(int x, int y, String filename) {
@@ -52,9 +52,9 @@ public class Tile {
     public BufferedImage getImage() {
         return this.image;
     }
-    
-    public void setImage(String file) {
-        filename = file;
+
+    public String getType() {
+        return (this.getClass().toString());
     }
 
     // draws the image

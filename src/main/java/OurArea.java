@@ -30,12 +30,10 @@ public class OurArea extends Area {
         }
         tiles = new Tile[NUM_TILES_X][NUM_TILES_Y];
         spritePosition = new Sprite[NUM_TILES_X][NUM_TILES_Y];
-        sprite = new Sprite(5, 5);
+        sprite = new Sprite(5, 5, "file:images/MainSprite/standing_sprite.png");
 
         int xRan = (int) (Math.random() * NUM_TILES_X);
         int yRan = (int) (Math.random() * NUM_TILES_Y);
-
-        chest = new Chest(xRan, yRan);
 
         // */
 
@@ -77,7 +75,7 @@ public class OurArea extends Area {
         /**
         * draws treasure chest at a random location on the screen (initializes)
         */
-        tiles[xRan][yRan] = chest;
+        tiles[xRan][yRan] = new Chest(xRan, yRan);
 
         spritePosition[5][5] = sprite;
     }
@@ -87,9 +85,15 @@ public class OurArea extends Area {
 
         spritePosition[sprite.getX()][sprite.getY()] = sprite;
         drawSprite(sprite.getX(), sprite.getY());
-        
-        if ((tiles[sprite.getX()][sprite.getY()]) == chest) {
+
+        if ("class Chest".equals((tiles[sprite.getX()][sprite.getY()]).getType())) {
             tiles[sprite.getX()][sprite.getY()] = new OpenChest(sprite.getX(), sprite.getY());
+
+        }
+        if ("class Water".equals((tiles[sprite.getX()][sprite.getY()]).getType())) {
+            sprite = new SwimmingSprite(sprite.getX(), sprite.getY());
+        } else {
+            sprite = new Sprite(sprite.getX(), sprite.getY(), "file:images/MainSprite/standing_sprite.png");
         }
     }
 
