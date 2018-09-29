@@ -1,3 +1,5 @@
+import java.awt.event.KeyEvent;
+
 /**
  * Provides the base model implementation for the Area class. Represents a Window constructed out of 64 x 64 tiles.
  * @author jddevaughnbrown
@@ -27,6 +29,8 @@ public class OurArea extends Area {
             trees[i] = new Tree((int) (Math.random() * MAX_TREE_X), (int) (Math.random() * MAX_TREE_Y), "images/tree_1.png");
         }
         tiles = new Tile[NUM_TILES_X][NUM_TILES_Y];
+        spritePosition = new Sprite[NUM_TILES_X][NUM_TILES_Y];
+        sprite = new Sprite(5, 5);
 
         // */
 
@@ -71,7 +75,14 @@ public class OurArea extends Area {
         * draws treasure chest at a random location on the screen (initializes)
         */
         tiles[xRan][yRan] = new Chest(xRan, yRan);
-
+        
+        spritePosition[5][5] = sprite;
+    }
+    @Override
+    protected void drawSprites() {
+        
+        spritePosition[sprite.getX()][sprite.getY()] = sprite;
+        drawSprite(sprite.getX(), sprite.getY());
     }
 
     @Override
@@ -92,5 +103,8 @@ public class OurArea extends Area {
                 drawTile(i, j);
             }
         }
+        
     }
+    
+    
 }

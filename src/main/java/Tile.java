@@ -16,6 +16,8 @@ public class Tile {
     int y;
     //image
     private BufferedImage image;
+    //filename
+    String filename;
 
     public Tile(int x, int y, String filename) {
 

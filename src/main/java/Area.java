@@ -3,6 +3,8 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.io.IOException;
@@ -15,7 +17,7 @@ import javax.imageio.ImageIO;
  *
  */
 @SuppressWarnings("serial")
-public class Area extends JPanel {
+public class Area extends JPanel implements KeyListener {
 
     /**
      * Calculates the number of tiles based on the Window's width.
@@ -34,6 +36,8 @@ public class Area extends JPanel {
      */
     protected static final double MAX_TREE_Y = Window.HEIGHT - Tree.HEIGHT;
 
+    protected char inputKey = ' ';
+
     /**
      * The trees that are scattered around the area.
      */
@@ -43,6 +47,10 @@ public class Area extends JPanel {
      * array of tiles (map).
      */
     protected Tile[][] tiles;
+    
+    protected Sprite[][] spritePosition;
+
+    protected Sprite sprite;
 
     /**
      * To hide this parameter from being passed around.
@@ -83,6 +91,13 @@ public class Area extends JPanel {
             tiles[i][j].draw(g2);
         }
     }
+    
+    public void drawSprite(int i, int j) {
+
+        if (spritePosition[i][j] != null) {
+            spritePosition[i][j].draw(g2);
+        }
+    }
 
     // Overridden function from JPanel, which allows us to
     // write our own paint method which draws our area.
@@ -96,6 +111,7 @@ public class Area extends JPanel {
 
         drawTiles();
         drawTrees();
+        drawSprites();
 
         // Sync for cross-platform smooth rendering.
         Toolkit.getDefaultToolkit().sync();
@@ -105,7 +121,11 @@ public class Area extends JPanel {
      * Draws the tiles to the screen.
      */
     protected void drawTiles() {
-     // Implement in a child class.
+        // Implement in a child class.
+    }
+    
+    protected void drawSprites() {
+        
     }
 
     /**
@@ -113,6 +133,31 @@ public class Area extends JPanel {
      */
     protected void drawTrees() {
         // Implement in a child class.
+    }
+
+    /**
+     * Key Event methods
+     * @param e
+     * @return 
+     */
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // TODO Auto-generated method stub
+        sprite.moveSprite(e);
+        drawSprite(sprite.getX(), sprite.getY());
+        repaint();
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // TODO Auto-generated method stub
+
     }
 
 }
