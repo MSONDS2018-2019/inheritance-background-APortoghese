@@ -6,8 +6,6 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 public class Tile {
-
-    // size of treasure chest on tile is 38x30 on a 64x64 background
     
     //size of tiles
     public static final int WIDTH = 64, HEIGHT = 64;
@@ -53,6 +51,10 @@ public class Tile {
 
     public BufferedImage getImage() {
         return this.image;
+    }
+    
+    public void setImage(String file) {
+        filename = file;
     }
 
     // draws the image

@@ -32,6 +32,11 @@ public class OurArea extends Area {
         spritePosition = new Sprite[NUM_TILES_X][NUM_TILES_Y];
         sprite = new Sprite(5, 5);
 
+        int xRan = (int) (Math.random() * NUM_TILES_X);
+        int yRan = (int) (Math.random() * NUM_TILES_Y);
+
+        chest = new Chest(xRan, yRan);
+
         // */
 
         // * Exercise #3. Initialize the tiles.
@@ -68,21 +73,24 @@ public class OurArea extends Area {
             }
 
         }
-        int xRan = (int) (Math.random() * NUM_TILES_X);
-        int yRan = (int) (Math.random() * NUM_TILES_Y);
 
         /**
         * draws treasure chest at a random location on the screen (initializes)
         */
-        tiles[xRan][yRan] = new Chest(xRan, yRan);
-        
+        tiles[xRan][yRan] = chest;
+
         spritePosition[5][5] = sprite;
     }
+
     @Override
     protected void drawSprites() {
-        
+
         spritePosition[sprite.getX()][sprite.getY()] = sprite;
         drawSprite(sprite.getX(), sprite.getY());
+        
+        if ((tiles[sprite.getX()][sprite.getY()]) == chest) {
+            tiles[sprite.getX()][sprite.getY()] = new OpenChest(sprite.getX(), sprite.getY());
+        }
     }
 
     @Override
@@ -103,8 +111,7 @@ public class OurArea extends Area {
                 drawTile(i, j);
             }
         }
-        
+
     }
-    
-    
+
 }

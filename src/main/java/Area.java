@@ -50,7 +50,9 @@ public class Area extends JPanel implements KeyListener {
     
     protected Sprite[][] spritePosition;
 
+    //interactive tiles
     protected Sprite sprite;
+    protected Chest chest;
 
     /**
      * To hide this parameter from being passed around.
