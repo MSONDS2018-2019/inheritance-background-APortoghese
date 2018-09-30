@@ -143,13 +143,14 @@ public class Area extends JPanel implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         // TODO Auto-generated method stub
-        sprite.moveSprite(e);
-        drawSprite(sprite.getX(), sprite.getY());
-    }
+            }
 
     @Override
     public void keyPressed(KeyEvent e) {
         // TODO Auto-generated method stub
+        sprite.moveSprite(e);
+        drawSprite(sprite.getX(), sprite.getY());
+
     }
 
     @Override

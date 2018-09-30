@@ -1,6 +1,4 @@
 import java.awt.event.KeyEvent;
-import java.time.Clock;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Provides the base model implementation for the Area class. Represents a Window constructed out of 64 x 64 tiles.
@@ -90,14 +88,15 @@ public class OurArea extends Area {
 
         spritePosition[sprite.getX()][sprite.getY()] = sprite;
         drawSprite(sprite.getX(), sprite.getY());
-
+        // if sprite is on chest tile, open chest and get spear
         if ("class Chest".equals((tiles[sprite.getX()][sprite.getY()]).getType())) {
             tiles[sprite.getX()][sprite.getY()] = new OpenChest(sprite.getX(), sprite.getY());
             sprite = new SpriteWithSpear(sprite.getX(), sprite.getY());
             hasSpear = true;
+            // if sprite is on water tile, swim
         } else if ("class Water".equals((tiles[sprite.getX()][sprite.getY()]).getType())) {
             sprite = new SwimmingSprite(sprite.getX(), sprite.getY());
-
+            // if space is pressed while spear is held, attack
         } else if (hasSpear) {
             if (sprite.isAttacking()) {
                 sprite = new SpriteAttack(sprite.getX(), sprite.getY());
@@ -109,7 +108,6 @@ public class OurArea extends Area {
         }
 
         repaint();
-
     }
 
     @Override

@@ -1,4 +1,3 @@
-
 public class SpriteWithSpear extends Sprite {
 
     public SpriteWithSpear(int x, int y) {

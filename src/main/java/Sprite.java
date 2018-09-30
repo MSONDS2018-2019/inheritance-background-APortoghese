@@ -7,7 +7,6 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-//TODO make acctualy work
 public class Sprite extends Tile {
 
     private int xPos;
@@ -16,7 +15,7 @@ public class Sprite extends Tile {
     private int preY;
     private String preImg;
     private String input;
-    private boolean attack = false;
+    private boolean attack;
 
     public Sprite(int x, int y, String filename) {
         super(x, y, filename);
@@ -36,6 +35,7 @@ public class Sprite extends Tile {
             xPos++;
         } else if (32 == e.getExtendedKeyCode()) {
             attack = true;
+            System.out.println("attack");
         } 
 
         setLocation(xPos, yPos);
