@@ -1,3 +1,5 @@
+import java.awt.event.KeyEvent;
+
 /**
  * Inheritance Driver class.
  * @author jddevaughnbrown
@@ -17,6 +19,7 @@ public class InheritanceDriver {
         Window window = new Window("Inheritance Lecture");
 
         window.add(area);
+        window.addKeyListener(area);
         window.setVisible(true);
     }
 

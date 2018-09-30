@@ -3,23 +3,22 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.io.IOException;
 import javax.swing.JPanel;
 import javax.imageio.ImageIO;
+
 /**
  * Area class.
  * @author jddevaughnbrown
  *
  */
 @SuppressWarnings("serial")
-public class Area extends JPanel {
+public class Area extends JPanel implements KeyListener {
 
-    /**
-     * Constants for the grass and stone tiles.
-     */
-    protected static final int GRASS = 0, STONE = 1;
     /**
      * Calculates the number of tiles based on the Window's width.
      */
@@ -28,7 +27,6 @@ public class Area extends JPanel {
      * Calculates the number of tiles based on the Window's height.
      */
     protected static final int NUM_TILES_Y = Window.HEIGHT / 64;
-
     /**
      * The maximum x position to place a tree on the screen.
      */
@@ -38,20 +36,21 @@ public class Area extends JPanel {
      */
     protected static final double MAX_TREE_Y = Window.HEIGHT - Tree.HEIGHT;
 
+    protected char inputKey = ' ';
+
     /**
      * The trees that are scattered around the area.
      */
     protected Tree[] trees;
 
     /**
-     * The area tile map.
+     * array of tiles (map).
      */
-    protected int[][] tiles;
+    protected Tile[][] tiles;
+    
+    protected Sprite[][] spritePosition;
 
-    /**
-     * The grass and stone images used as the floor texture.
-     */
-    private BufferedImage grassImage, stoneImage;
+    protected Sprite sprite;
 
     /**
      * To hide this parameter from being passed around.
@@ -62,20 +61,6 @@ public class Area extends JPanel {
      * The constructor for the Area class.
      */
     public Area() {
-        // Load the grass image from the file.
-        try {
-            grassImage = ImageIO.read(new URL("file:images/grass.png"));
-        } catch (IOException e) {
-            System.out.println("Failed to load 'grass.png' image.");
-        }
-
-        // Load the stone image from the file.
-        try {
-            stoneImage = ImageIO.read(new URL("file:images/stone.png"));
-        } catch (IOException e) {
-            System.out.println("Failed to load 'stone.png' image.");
-        }
-
         g2 = null;
 
         setBackground(Color.BLACK);
@@ -83,30 +68,34 @@ public class Area extends JPanel {
     }
 
     /**
-     * Draws the grass at the specified tile.
-     * @param i - the row number of the tile
-     * @param j - the column number of the tile
-     */
-    protected void drawGrass(int i, int j) {
-        g2.drawImage(grassImage, null, i * 64, j * 64);
-    }
-
-    /**
-     * Draws the stone at the specified tile.
-     * @param i - the row number of the tile
-     * @param j - the column number of the tile position
-     */
-    protected void drawStone(int i, int j) {
-        g2.drawImage(stoneImage, null, i * 64, j * 64);
-    }
-
-    /**
      * Draws the specified tree.
-     * @param i - the array position of the tree to be drawn
+     * @param i
+     *      - the array position of the tree to be drawn
      */
     protected void drawTree(int i) {
         if (trees != null) {
             trees[i].draw(g2);
+        }
+    }
+
+    /**
+     * draws added tiles.
+     * @param i
+     *      - x coordinate of tile on screen
+     * @param j
+     *      - y coordinate of tile on screen
+     */
+    public void drawTile(int i, int j) {
+
+        if (tiles[i][j] != null) {
+            tiles[i][j].draw(g2);
+        }
+    }
+    
+    public void drawSprite(int i, int j) {
+
+        if (spritePosition[i][j] != null) {
+            spritePosition[i][j].draw(g2);
         }
     }
 
@@ -122,6 +111,7 @@ public class Area extends JPanel {
 
         drawTiles();
         drawTrees();
+        drawSprites();
 
         // Sync for cross-platform smooth rendering.
         Toolkit.getDefaultToolkit().sync();
@@ -133,12 +123,40 @@ public class Area extends JPanel {
     protected void drawTiles() {
         // Implement in a child class.
     }
+    
+    protected void drawSprites() {
+        
+    }
 
     /**
      * Draws the trees to the screen.
      */
     protected void drawTrees() {
         // Implement in a child class.
+    }
+
+    /**
+     * Key Event methods
+     * @param e
+     * @return 
+     */
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // TODO Auto-generated method stub
+            }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        // TODO Auto-generated method stub
+        sprite.moveSprite(e);
+        drawSprite(sprite.getX(), sprite.getY());
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 
 }
