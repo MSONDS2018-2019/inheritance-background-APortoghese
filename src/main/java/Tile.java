@@ -10,8 +10,8 @@ public class Tile {
     // size of tiles
     public static final int WIDTH = 64, HEIGHT = 64;
     // location in pixles
-    int x;
-    int y;
+    private int x;
+    private int y;
     // image
     private BufferedImage image;
     // filename

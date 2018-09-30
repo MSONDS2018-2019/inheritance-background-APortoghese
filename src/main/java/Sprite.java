@@ -16,46 +16,35 @@ public class Sprite extends Tile {
     private int preY;
     private String preImg;
     private String input;
-    private boolean spear;
+    private boolean attack = false;
 
     public Sprite(int x, int y, String filename) {
         super(x, y, filename);
         xPos = x;
         yPos = y;
-        spear = false;
     }
 
     public void moveSprite(KeyEvent e) {
-        preX = xPos;
-        preY = yPos;
-        preImg = super.filename;
-        
+
         if ('w' == e.getKeyChar()) {
             yPos--;
-        }
-        else if ('s' == e.getKeyChar()) {
+        } else if ('s' == e.getKeyChar()) {
             yPos++;
-        }
-        else if ('a' == e.getKeyChar()) {
+        } else if ('a' == e.getKeyChar()) {
             xPos--;
-        }
-        else if ('d' == e.getKeyChar()) {
+        } else if ('d' == e.getKeyChar()) {
             xPos++;
-        } else {
-            yPos = yPos;
-            xPos = xPos;
-        }
-        
+        } else if (32 == e.getExtendedKeyCode()) {
+            attack = true;
+        } 
+
         setLocation(xPos, yPos);
         System.out.print(xPos + "   ");
         System.out.println(yPos);
     }
     
-    public Boolean hasSpear(){
-        return spear;
-    }
-    public void setSpear(boolean k) {
-        spear = k;
+    public boolean isAttacking() {
+        return attack;
     }
 
 }

@@ -1,4 +1,6 @@
 import java.awt.event.KeyEvent;
+import java.time.Clock;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Provides the base model implementation for the Area class. Represents a Window constructed out of 64 x 64 tiles.
@@ -21,7 +23,8 @@ public class OurArea extends Area {
      * @param numberOfTrees
      *      - the number of trees to place in the area
      */
-    boolean hasSpear_Holder;
+    // if the sprite has gotten the spear
+    private boolean hasSpear;
 
     public OurArea(int numberOfTrees) {
         super(); // A magic function. I wonder what it does?
@@ -85,23 +88,28 @@ public class OurArea extends Area {
     @Override
     protected void drawSprites() {
 
-        //hasSpear_Holder = sprite.hasSpear();
-
         spritePosition[sprite.getX()][sprite.getY()] = sprite;
         drawSprite(sprite.getX(), sprite.getY());
 
         if ("class Chest".equals((tiles[sprite.getX()][sprite.getY()]).getType())) {
             tiles[sprite.getX()][sprite.getY()] = new OpenChest(sprite.getX(), sprite.getY());
             sprite = new SpriteWithSpear(sprite.getX(), sprite.getY());
-            hasSpear_Holder = true;
+            hasSpear = true;
         } else if ("class Water".equals((tiles[sprite.getX()][sprite.getY()]).getType())) {
             sprite = new SwimmingSprite(sprite.getX(), sprite.getY());
-            
-        } else if (hasSpear_Holder){
-            sprite = new SpriteWithSpear(sprite.getX(), sprite.getY());
+
+        } else if (hasSpear) {
+            if (sprite.isAttacking()) {
+                sprite = new SpriteAttack(sprite.getX(), sprite.getY());
+            } else {
+                sprite = new SpriteWithSpear(sprite.getX(), sprite.getY());
+            }
         } else {
             sprite = new Sprite(sprite.getX(), sprite.getY(), "file:images/MainSprite/standing_sprite.png");
         }
+
+        repaint();
+
     }
 
     @Override
