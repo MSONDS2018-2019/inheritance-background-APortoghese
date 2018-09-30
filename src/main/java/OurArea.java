@@ -21,6 +21,8 @@ public class OurArea extends Area {
      * @param numberOfTrees
      *      - the number of trees to place in the area
      */
+    boolean hasSpear_Holder;
+
     public OurArea(int numberOfTrees) {
         super(); // A magic function. I wonder what it does?
         // * Exercise #1. Setup the tree objects at random locations.
@@ -83,15 +85,20 @@ public class OurArea extends Area {
     @Override
     protected void drawSprites() {
 
+        //hasSpear_Holder = sprite.hasSpear();
+
         spritePosition[sprite.getX()][sprite.getY()] = sprite;
         drawSprite(sprite.getX(), sprite.getY());
 
         if ("class Chest".equals((tiles[sprite.getX()][sprite.getY()]).getType())) {
             tiles[sprite.getX()][sprite.getY()] = new OpenChest(sprite.getX(), sprite.getY());
-
-        }
-        if ("class Water".equals((tiles[sprite.getX()][sprite.getY()]).getType())) {
+            sprite = new SpriteWithSpear(sprite.getX(), sprite.getY());
+            hasSpear_Holder = true;
+        } else if ("class Water".equals((tiles[sprite.getX()][sprite.getY()]).getType())) {
             sprite = new SwimmingSprite(sprite.getX(), sprite.getY());
+            
+        } else if (hasSpear_Holder){
+            sprite = new SpriteWithSpear(sprite.getX(), sprite.getY());
         } else {
             sprite = new Sprite(sprite.getX(), sprite.getY(), "file:images/MainSprite/standing_sprite.png");
         }

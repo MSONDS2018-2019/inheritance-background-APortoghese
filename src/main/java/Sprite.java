@@ -16,11 +16,13 @@ public class Sprite extends Tile {
     private int preY;
     private String preImg;
     private String input;
+    private boolean spear;
 
     public Sprite(int x, int y, String filename) {
         super(x, y, filename);
         xPos = x;
         yPos = y;
+        spear = false;
     }
 
     public void moveSprite(KeyEvent e) {
@@ -47,6 +49,13 @@ public class Sprite extends Tile {
         setLocation(xPos, yPos);
         System.out.print(xPos + "   ");
         System.out.println(yPos);
+    }
+    
+    public Boolean hasSpear(){
+        return spear;
+    }
+    public void setSpear(boolean k) {
+        spear = k;
     }
 
 }
